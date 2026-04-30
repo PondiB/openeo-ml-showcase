@@ -1,4 +1,4 @@
-# Use official Python 3.11 image
+
 FROM ghcr.io/osgeo/gdal:ubuntu-small-3.12.2
 
 # Prevent Python from writing .pyc files and enable unbuffered logs
@@ -32,7 +32,7 @@ WORKDIR /app/openeo-processes-dask-ml
 RUN git checkout class_mlm
 
 # Install dependencies with extras --extras "torch onnx scikit-learn"
-RUN poetry install --no-interaction --no-ansi --extras scikit-learn
+RUN poetry install --no-interaction --no-ansi --extras "scikit-learn"
 
 # Default command (adjust as needed)
 CMD ["python", "examples/train_rf.py"]
