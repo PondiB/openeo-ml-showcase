@@ -1,0 +1,38 @@
+services:
+  openeocraft-backend:
+    image: brianpondi/openeocraft:latest
+    container_name: openeocraft-backend
+    # Force x86_64 architecture — torch (used by sits/TempCNN) does not provide
+    # ARM64 Linux binaries, so the image must run as amd64 even on Apple Silicon.
+    # On M-series Macs: enable Rosetta in Docker Desktop → Settings → General
+    # ("Use Rosetta for x86_64/amd64 emulation") for faster emulation.
+    platform: linux/amd64
+    ports:
+      - "${OPENEO_PORT:-8001}:8000"
+
+  uc2-tempcnn-r:
+    image: brianpondi/openeocraft:latest
+    container_name: openeocraft-uc2-tempcnn-r
+    # Force x86_64 — same reason as above (torch ARM64 Linux binaries unavailable).
+    platform: linux/amd64
+    depends_on:
+      openeocraft-backend:
+        condition: service_started
+    working_dir: /work
+    command:
+      - bash
+      - -lc
+      - >
+        Rscript -e "if (!requireNamespace('openeo', quietly = TRUE)) install.packages('openeo', repos='https://cloud.r-project.org')"
+        && Rscript /work/usecase2.R
+    environment:
+      OPENEO_HOST: ${OPENEO_HOST:-http://openeocraft-backend:8000}
+      OPENEO_USER: ${OPENEO_USER}
+      OPENEO_PASSWORD: ${OPENEO_PASSWORD}
+      OUTPUT_DIR: /work/results
+      UC2_REGULARIZE_PERIOD: ${UC2_REGULARIZE_PERIOD:-}
+      UC2_GRID_RESOLUTION: ${UC2_GRID_RESOLUTION:-}
+      UC2_COLLECTION_BANDS: ${UC2_COLLECTION_BANDS:-}
+    volumes:
+      - ./usecase2.R:/work/usecase2.R:ro
+      - ./results:/work/results
