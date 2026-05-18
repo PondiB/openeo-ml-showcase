@@ -34,8 +34,8 @@ def plot():
         ax.set_yticks([])
         return im
 
-    im1 = show_raster(axes[0], py_raster, "py_raster")
-    im2 = show_raster(axes[1], r_raster, "r_raster")
+    im1 = show_raster(axes[0], py_raster, "openeo-processes-dask-ml result")
+    im2 = show_raster(axes[1], r_raster, "openEOcubes result")
 
     # Discrete legend labels
     tick_labels = [constants.CLASS_NAME_MAPPING[i] for i in range(1, 7)]
