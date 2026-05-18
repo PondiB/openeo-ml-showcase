@@ -1,0 +1,6 @@
+services:
+  datacubes-ml-api:
+    build: .
+    container_name: datacubes_ml_api_container
+    volumes:
+      - ./results:/app/results
