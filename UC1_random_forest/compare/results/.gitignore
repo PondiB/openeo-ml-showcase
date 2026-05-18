@@ -1,3 +1,7 @@
+# do not add results to repository
+# to create these file simply run main.py script
+# or use the provided docker-compose.yml
+
 use_case_1_polygons_match.json
 use_case_1_map.png
 use_case_1_histogram.png

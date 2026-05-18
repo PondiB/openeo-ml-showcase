@@ -1,2 +1,4 @@
+# ignore qgis aux files
+
 result_python.gtiff.aux.xml
 result_r.tif.aux.xml
