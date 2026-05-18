@@ -74,8 +74,8 @@ def aggregate_polygons():
     print(class_id_match_count)
 
     result.plot(column="class_id_matches", legend=True)
-    plt.savefig("results/map.png")
+    plt.savefig("results/use_case_1_polygons_match.png")
 
-    result.to_file("results/field_compare.json", driver="GeoJSON")
+    result.to_file("results/use_case_1_polygons_match.json", driver="GeoJSON")
 
     # optional: compare with validation class ID (tricky!)

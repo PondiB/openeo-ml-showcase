@@ -42,4 +42,4 @@ def histogram():
     ax.bar_label(rects2, padding=3, fmt='%.2f')
 
     plt.tight_layout()
-    plt.savefig("results/histogram.png")
+    plt.savefig("results/use_case_1_histogram.png")

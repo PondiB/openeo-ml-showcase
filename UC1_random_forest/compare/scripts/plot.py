@@ -52,4 +52,4 @@ def plot():
     cbar.set_ticklabels(tick_labels)
     cbar.set_label("Classes")
 
-    plt.savefig("results/visualize.png")
+    plt.savefig("results/use_case_1_map.png")
