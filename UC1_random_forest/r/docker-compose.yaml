@@ -1,0 +1,25 @@
+services:
+  openeocubes-backend:
+    image: brianpondi/openeocubes
+    container_name: openeocubes-backend
+    ports:
+      - "${OPENEO_PORT:-8000}:8000"
+
+  uc1-random-forest-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: openeocubes-uc1-rf
+    depends_on:
+      openeocubes-backend:
+        condition: service_started
+    environment:
+      OPENEO_HOST: ${OPENEO_HOST:-http://openeocubes-backend:8000}
+      OPENEO_USER: ${OPENEO_USER:-brian}
+      OPENEO_PASSWORD: ${OPENEO_PASSWORD:-123456}
+      OUTPUT_DIR: /work/results
+      PROCESS_GRAPH: /work/full_pg.json
+    volumes:
+      - ./full_pg.json:/work/full_pg.json:ro
+      - ./results:/work/results
+    command: ["uv", "run", "run_pg.py"]
