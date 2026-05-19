@@ -1,4 +1,4 @@
-# datacubes-ml-api-paper
+# openEO ML Showcase
 
 Examples for ML workflows on Earth observation datacubes using the openEO client API: training, inference, and embedding-style outputs. Each use case is self-contained under its folder with Docker (and Compose where noted).
 
@@ -7,6 +7,7 @@ Examples for ML workflows on Earth observation datacubes using the openEO client
 | Path | Summary |
 |------|---------|
 | [`UC1_random_forest/python`](UC1_random_forest/python) | Random Forest on Sentinel-2 L2A reflectance for crop-type classification (GeoTIFF results). Run: `docker compose up --build` from that directory. |
+| [`UC1_random_forest/r`](UC1_random_forest/r) | Same UC1 graph via openEOcubes. Run: `docker compose up --build` from that directory. Test login: `brian` / `123456`. |
 | [`UC2_tempcnn/r`](UC2_tempcnn/r) | TempCNN in R via `brianpondi/openeocraft`; Compose runs a local backend and the R job. Test login: `brian` / `123456`. See README for ports and Docker resource sizing. |
 | [`UC3_embeddings`](UC3_embeddings) | Terramind foundation model: EO datacube → embeddings datacube (Zarr output, CPU inference). Run: `docker compose up --build` from that directory. |
 

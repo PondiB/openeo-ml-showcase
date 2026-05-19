@@ -1,0 +1,9 @@
+[project]
+name = "uc1-openeocubes"
+version = "0.1.0"
+description = "Submit UC1 random forest process graph to openEOcubes"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "openeo>=0.35.0",
+]
