@@ -1,0 +1,26 @@
+valid paired pixels : 258,168
+overall accuracy    : 0.8142
+cohen's kappa       : 0.7552
+
+Pontius decomposition:
+  agreement         : 0.8142
+  quantity disag.   : 0.0537
+  allocation disag. : 0.1320
+  total disagreement: 0.1858  (check: Q + A = 0.1858)
+
+Per-class (rows = py reference, cols = r comparison):
+  barley               producer=0.679   user=0.804   F1=0.736   support=10785
+  corn                 producer=0.949   user=0.933   F1=0.941   support=51426
+  permanent meadows    producer=0.761   user=0.790   F1=0.775   support=77864
+  rapeseed             producer=0.935   user=0.901   F1=0.917   support=3741
+  temporary meadows    producer=0.737   user=0.830   F1=0.781   support=82119
+  wheat                producer=0.957   user=0.685   F1=0.799   support=32233
+
+Confusion matrix (rows=py, cols=r):
+             barle    corn   perma   rapes   tempo   wheat
+  barley      7318      21     390     113    1053    1890
+  corn           0   48822     238       0    1595     771
+  permanent meadows   274     285   59222      36    9359    8688
+  rapeseed      78       0      15    3496     147       5
+  temporary meadows   800    3051   14693     235   60499    2841
+  wheat        635     160     362       1     219   30856
